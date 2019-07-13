@@ -16,6 +16,7 @@ class ActualQuestionViewController: UIViewController {
     @IBOutlet weak var answer4Label: UILabel!
     
     var question = [String: String]()
+    var questionNum = 0
     var correctIndex = 0
     var correctLabel = UILabel()
     var labelArray = [UILabel]()
@@ -79,9 +80,14 @@ class ActualQuestionViewController: UIViewController {
         }
         if(num == correctIndex) {
             labelChosen.backgroundColor = .green
+            answeredArray[questionNum] = 1
+            count[categoryNum] += 1
+            totalCount[categoryNum] += 1
         } else {
             labelChosen.backgroundColor = .red
             correctLabel.backgroundColor = .green
+            answeredArray[questionNum] = 2
+            totalCount[categoryNum] += 1
         }
         answered = true
     }
