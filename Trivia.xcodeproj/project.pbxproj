@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		37FB62C122DA60770088A23F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62C022DA60770088A23F /* AppDelegate.swift */; };
-		37FB62C322DA60770088A23F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62C222DA60770088A23F /* ViewController.swift */; };
 		37FB62C622DA60770088A23F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB62C422DA60770088A23F /* Main.storyboard */; };
 		37FB62C822DA60780088A23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FB62C722DA60780088A23F /* Assets.xcassets */; };
 		37FB62CB22DA60780088A23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB62C922DA60780088A23F /* LaunchScreen.storyboard */; };
 		37FB62D622DA60780088A23F /* TriviaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62D522DA60780088A23F /* TriviaTests.swift */; };
 		37FB62E122DA60780088A23F /* TriviaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62E022DA60780088A23F /* TriviaUITests.swift */; };
+		A3C2E43A22DA683F00750A2F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43922DA683F00750A2F /* StartViewController.swift */; };
+		A3C2E43C22DA685700750A2F /* GeneralCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */; };
+		A3C2E43E22DA686800750A2F /* GeneralQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */; };
+		A3C2E44022DA687900750A2F /* ActualQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */; };
+		A3C2E44222DA689400750A2F /* SpeedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */; };
+		A3C2E44422DA68A200750A2F /* SpeedQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */; };
+		A3C2E44622DA692D00750A2F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E44522DA692C00750A2F /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,6 @@
 /* Begin PBXFileReference section */
 		37FB62BD22DA60770088A23F /* Trivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FB62C022DA60770088A23F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		37FB62C222DA60770088A23F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		37FB62C522DA60770088A23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37FB62C722DA60780088A23F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37FB62CA22DA60780088A23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +52,13 @@
 		37FB62DC22DA60780088A23F /* TriviaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TriviaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FB62E022DA60780088A23F /* TriviaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaUITests.swift; sourceTree = "<group>"; };
 		37FB62E222DA60780088A23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3C2E43922DA683F00750A2F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCategoriesViewController.swift; sourceTree = "<group>"; };
+		A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralQuestionsViewController.swift; sourceTree = "<group>"; };
+		A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualQuestionViewController.swift; sourceTree = "<group>"; };
+		A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedInfoViewController.swift; sourceTree = "<group>"; };
+		A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedQuestionViewController.swift; sourceTree = "<group>"; };
+		A3C2E44522DA692C00750A2F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +110,17 @@
 			isa = PBXGroup;
 			children = (
 				37FB62C022DA60770088A23F /* AppDelegate.swift */,
-				37FB62C222DA60770088A23F /* ViewController.swift */,
 				37FB62C422DA60770088A23F /* Main.storyboard */,
+				A3C2E43922DA683F00750A2F /* StartViewController.swift */,
+				A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */,
+				A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */,
+				A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */,
+				A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */,
+				A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */,
 				37FB62C722DA60780088A23F /* Assets.xcassets */,
 				37FB62C922DA60780088A23F /* LaunchScreen.storyboard */,
 				37FB62CC22DA60780088A23F /* Info.plist */,
+				A3C2E44522DA692C00750A2F /* SwiftyJSON.swift */,
 			);
 			path = Trivia;
 			sourceTree = "<group>";
@@ -256,8 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37FB62C322DA60770088A23F /* ViewController.swift in Sources */,
 				37FB62C122DA60770088A23F /* AppDelegate.swift in Sources */,
+				A3C2E43C22DA685700750A2F /* GeneralCategoriesViewController.swift in Sources */,
+				A3C2E44022DA687900750A2F /* ActualQuestionViewController.swift in Sources */,
+				A3C2E44622DA692D00750A2F /* SwiftyJSON.swift in Sources */,
+				A3C2E43A22DA683F00750A2F /* StartViewController.swift in Sources */,
+				A3C2E44222DA689400750A2F /* SpeedInfoViewController.swift in Sources */,
+				A3C2E43E22DA686800750A2F /* GeneralQuestionsViewController.swift in Sources */,
+				A3C2E44422DA68A200750A2F /* SpeedQuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GAJ2L4LZSM;
+				DEVELOPMENT_TEAM = 535QM7QVGA;
 				INFOPLIST_FILE = Trivia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GAJ2L4LZSM;
+				DEVELOPMENT_TEAM = 535QM7QVGA;
 				INFOPLIST_FILE = Trivia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
