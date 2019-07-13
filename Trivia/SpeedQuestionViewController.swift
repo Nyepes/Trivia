@@ -10,6 +10,14 @@ import UIKit
 
 class SpeedQuestionViewController: UIViewController {
 
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var firstAnswerLabel: UILabel!
+    @IBOutlet weak var secondAnswerLabel: UILabel!
+    @IBOutlet weak var thirdAnswerLabel: UILabel!
+    @IBOutlet weak var fourthAnswerLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var timeRemainingLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

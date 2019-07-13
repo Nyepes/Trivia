@@ -10,10 +10,19 @@ import UIKit
 
 class SpeedInfoViewController: UIViewController {
 
+    @IBOutlet weak var highScoreLabel: UILabel!
+    var highScore = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if highScore == 0 {
+            highScoreLabel.text = ""
+            
+        }
+        else {
+            highScoreLabel.text = "High Score: \(highScore)"
+        }
+        
     }
     
 
