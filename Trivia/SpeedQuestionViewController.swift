@@ -9,7 +9,8 @@
 import UIKit
 
 class SpeedQuestionViewController: UIViewController {
-
+    
+    var labelsArray = [UILabel]()
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var firstAnswerLabel: UILabel!
     @IBOutlet weak var secondAnswerLabel: UILabel!
@@ -17,47 +18,92 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var fourthAnswerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
-    var questions = [String: String]()
+    var questions = [[String: String]]()
     var score = 0
-    
+    var numOfQuestions = 0
+    var correctAnswer = ""
     
     override func viewDidLoad() {
+        labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
-        if let url = URL(string: getRandomQuestion()) {
-            if let data = try? Data(contentsOf: url) {
-                let json = try! JSON(data: data)
-                    parse(json: json)
-                    return
-                
+        updateParse()
+    }
+    
+    func parse(json: JSON) {
+        if numOfQuestions < 48{
+            for i in 0...49 {
+                let result = json["results"][i]
+                let question = result["question"].stringValue.stringByDecodingHTMLEntities
+                let correct = result["correct_answer"].stringValue.stringByDecodingHTMLEntities
+                let wrong1 = result["incorrect_answers"][0].stringValue.stringByDecodingHTMLEntities
+                let wrong2 = result["incorrect_answers"][1].stringValue.stringByDecodingHTMLEntities
+                let wrong3 = result["incorrect_answers"][2].stringValue.stringByDecodingHTMLEntities
+                let source = ["question": question, "correct": correct, "wrong1": wrong1, "wrong2": wrong2, "wrong3": wrong3]
+                questions.append(source)
             }
         }
-//        loadError()
-    }
-    func getRandomQuestion () -> String {
-        
-        var categories = [String]()
-        categories.append("https://opentdb.com/api.php?amount=25&category=21&difficulty=medium&type=multiple")
-        categories.append( "https://opentdb.com/api.php?amount=30&category=23&difficulty=medium&type=multiple")
-        return categories.randomElement()!
-//        let category = categories.randomElement()!
-//        let result = json ["results"]["question"]
-//        print(result)
-//        let question = result! ["question"]
-        
-    }
-//
-   func parse(json: JSON) {
-//        for result in json["results"].arrayValue {
-//            let question = result["question"].stringValue
-//            let answer = result["correct_answer"].stringValue
-//            let wrongAnswer = result["wrong_answer"]
-//            //print(question)
-//            print(answer)
-//        }
-////        let random = Int.random(in: 1...5)
-////        let question = json["results"].randomElement()
-////        questionLabel.text = question!["question"] as! String
-////        let result = question["question"]!
-//
+        else {
+            updateParse()
+        }
    }
+    
+    func startGame() {
+        
+    }
+    
+    func updateLabels() {
+        questionLabel.text = questions[0]["question"]
+        var answersArray = [questions[0]["correct"], questions[0]["wrong1"], questions[0]["wrong2"], questions[0]["wrong3"]]
+        answersArray.shuffle()
+        print(answersArray)
+        firstAnswerLabel.text = answersArray[0]
+        secondAnswerLabel.text = answersArray[1]
+        thirdAnswerLabel.text = answersArray[2]
+        fourthAnswerLabel.text = answersArray[3]
+        
+    }
+    
+    @IBAction func touched(_ sender: UITapGestureRecognizer) {
+        let selectedPoint = sender.location(in: view)
+        numOfQuestions += 1
+        for label in labelsArray {
+            if(label.frame.contains(selectedPoint)) {
+                checkAnswer(label: label)
+                //timer plz
+                questions.remove(at: 0)
+                for label in labelsArray {
+                    label.backgroundColor = .white
+                }
+
+                updateLabels()
+            }
+        }
+        
+    }
+    
+    func checkAnswer (label: UILabel) {
+        if label.text == correctAnswer {
+            score += 1
+            label.backgroundColor = .green
+        }
+        else {
+            label.backgroundColor = .red
+            for clabel in labelsArray {
+                if clabel.text! == questions[0]["correct"] {
+                    clabel.backgroundColor = .green
+                }
+            }
+        }
+    }
+    func updateParse () {
+        if let url = URL(string: "https://opentdb.com/api.php?amount=50&type=multiple") {
+            if let data = try? Data(contentsOf: url) {
+                let json = try! JSON(data: data)
+                numOfQuestions = 0
+                parse(json: json)
+                updateLabels()
+            }
+        }
+    }
 }
+
