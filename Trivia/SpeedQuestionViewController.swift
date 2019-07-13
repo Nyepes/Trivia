@@ -45,8 +45,8 @@ class SpeedQuestionViewController: UIViewController {
 //        let question = result! ["question"]
         
     }
-//    
-//    func parse(json: JSON) {
+//
+   func parse(json: JSON) {
 //        for result in json["results"].arrayValue {
 //            let question = result["question"].stringValue
 //            let answer = result["correct_answer"].stringValue
@@ -59,5 +59,5 @@ class SpeedQuestionViewController: UIViewController {
 ////        questionLabel.text = question!["question"] as! String
 ////        let result = question["question"]!
 //
-//    }
+   }
 }
