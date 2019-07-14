@@ -8,6 +8,8 @@
 
 import UIKit
 
+var score = Timer()
+
 class SpeedQuestionViewController: UIViewController {
     
     var labelsArray = [UILabel]()
@@ -19,9 +21,9 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
     var questions = [[String: String]]()
-    var score = 0
     var numOfQuestions = 0
     var correctAnswer = ""
+    var paused = false
     
     override func viewDidLoad() {
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
@@ -51,7 +53,7 @@ class SpeedQuestionViewController: UIViewController {
         else {
             updateParse()
         }
-   }
+    }
     
     func startGame() {
         
@@ -73,18 +75,40 @@ class SpeedQuestionViewController: UIViewController {
         if numOfQuestions < 48 {
             let selectedPoint = sender.location(in: view)
             numOfQuestions += 1
-            for label in labelsArray {
-                if(label.frame.contains(selectedPoint)) {
-                    checkAnswer(label: label)
-                    //timer plz
-                    questions.remove(at: 0)
-                    for label in labelsArray {
-                        label.backgroundColor = .white
+                for label in labelsArray {
+                    if(label.frame.contains(selectedPoint)) {
+                        if label.text! == questions[0]["correct"] {
+                            label.backgroundColor = .green
+                            questions.remove(at: 0)
+                            paused = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.updateLabels()
+                                for label in self.labelsArray {
+                                    label.backgroundColor = .white
+                                }
+                            }
+                        }
+                        else {
+                            label.backgroundColor = .red
+                            checkAnswer(label: label)
+                            questions.remove(at: 0)
+                            paused = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                for label in self.labelsArray {
+                                    label.backgroundColor = .white
+                                    self.updateLabels()
+                                }
+                            }
+                        }
                     }
-                    
-                    updateLabels()
                 }
-            }
+//            }
+//            else {
+//
+//                }
+//                paused = true
+//                updateLabels()
+//            }
         }
         else {
             updateParse()
@@ -93,7 +117,7 @@ class SpeedQuestionViewController: UIViewController {
     
     func checkAnswer (label: UILabel) {
         if label.text == correctAnswer {
-            score += 1
+            //score += 1
             label.backgroundColor = .green
         }
         else {
