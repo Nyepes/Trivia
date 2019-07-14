@@ -26,12 +26,17 @@ class SpeedQuestionViewController: UIViewController {
     override func viewDidLoad() {
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
-        updateParse()
+        if let url = URL(string: "https://opentdb.com/api.php?amount=50&type=multiple") {
+            if let data = try? Data(contentsOf: url) {
+                let json = try! JSON(data: data)
+                parse(json: json)
+            }
+        }
     }
     
     func parse(json: JSON) {
         if numOfQuestions < 48{
-            for i in 0...49 {
+            for i in 0...48 {
                 let result = json["results"][i]
                 let question = result["question"].stringValue.stringByDecodingHTMLEntities
                 let correct = result["correct_answer"].stringValue.stringByDecodingHTMLEntities
@@ -40,6 +45,7 @@ class SpeedQuestionViewController: UIViewController {
                 let wrong3 = result["incorrect_answers"][2].stringValue.stringByDecodingHTMLEntities
                 let source = ["question": question, "correct": correct, "wrong1": wrong1, "wrong2": wrong2, "wrong3": wrong3]
                 questions.append(source)
+                updateLabels()
             }
         }
         else {
@@ -64,21 +70,25 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     @IBAction func touched(_ sender: UITapGestureRecognizer) {
-        let selectedPoint = sender.location(in: view)
-        numOfQuestions += 1
-        for label in labelsArray {
-            if(label.frame.contains(selectedPoint)) {
-                checkAnswer(label: label)
-                //timer plz
-                questions.remove(at: 0)
-                for label in labelsArray {
-                    label.backgroundColor = .white
+        if numOfQuestions < 48 {
+            let selectedPoint = sender.location(in: view)
+            numOfQuestions += 1
+            for label in labelsArray {
+                if(label.frame.contains(selectedPoint)) {
+                    checkAnswer(label: label)
+                    //timer plz
+                    questions.remove(at: 0)
+                    for label in labelsArray {
+                        label.backgroundColor = .white
+                    }
+                    
+                    updateLabels()
                 }
-
-                updateLabels()
             }
         }
-        
+        else {
+            updateParse()
+        }
     }
     
     func checkAnswer (label: UILabel) {
@@ -101,7 +111,6 @@ class SpeedQuestionViewController: UIViewController {
                 let json = try! JSON(data: data)
                 numOfQuestions = 0
                 parse(json: json)
-                updateLabels()
             }
         }
     }
