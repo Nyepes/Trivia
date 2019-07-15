@@ -20,6 +20,7 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var fourthAnswerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
@@ -40,6 +41,8 @@ class SpeedQuestionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         score = 0
+        resetButton.alpha = 0
+        resetButton.isEnabled = false
     }
     
     func countdown() {
@@ -49,9 +52,15 @@ class SpeedQuestionViewController: UIViewController {
             if self.count < 0.00 {
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
-//                self.view.backgroundColor = .red
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//                   self.performSegue(withIdentifier: "backToInfo", sender: self)
+                    self.questionLabel.text = "Score: " + String(score)
+                    self.firstAnswerLabel.text = ""
+                    self.secondAnswerLabel.text = ""
+                    self.thirdAnswerLabel.text = ""
+                    self.fourthAnswerLabel.text = ""
+                    self.wait = true
+                    self.resetButton.alpha = 1
+                    self.resetButton.isEnabled = true
                 }
             }
         }
@@ -117,7 +126,7 @@ class SpeedQuestionViewController: UIViewController {
                                 self.wait = false
                             }
 
-                            
+            
                         }
                         else {
                             count -= 3
