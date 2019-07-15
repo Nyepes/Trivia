@@ -15,8 +15,7 @@ class SpeedInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        checkHighScore()
     }
     override func viewDidAppear(_ animated: Bool) {
         checkHighScore()

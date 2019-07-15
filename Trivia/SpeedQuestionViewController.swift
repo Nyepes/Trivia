@@ -26,8 +26,11 @@ class SpeedQuestionViewController: UIViewController {
     var correctAnswer = ""
     var count = 30.00
     var wait = false
+    var ended = false
     
     override func viewDidLoad() {
+        resetButton.alpha = 0
+        resetButton.isEnabled = false
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
         if let url = URL(string: "https://opentdb.com/api.php?amount=50&type=multiple") {
@@ -50,10 +53,11 @@ class SpeedQuestionViewController: UIViewController {
             self.count -= 0.01
             self.timeRemainingLabel.text = "Time Remaining: " +  String(format: "%.2f", self.count)  + "sec"
             if self.count < 0.00 {
+                self.ended = true
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//                    self.questionLabel.text = "Score: " + String(score)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                    self.questionLabel.text = "Score: " + String(score)
                     self.firstAnswerLabel.text = ""
                     self.secondAnswerLabel.text = ""
                     self.thirdAnswerLabel.text = ""
@@ -61,6 +65,7 @@ class SpeedQuestionViewController: UIViewController {
                     self.wait = true
                     self.resetButton.alpha = 1
                     self.resetButton.isEnabled = true
+                    self.scoreLabel.text = ""
                 }
             }
         }
@@ -102,8 +107,7 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     @IBAction func touched(_ sender: UITapGestureRecognizer) {
-        print(wait)
-        if(wait) {
+        if(wait || ended) {
             return
         }
         if numOfQuestions < 48 {
@@ -111,13 +115,13 @@ class SpeedQuestionViewController: UIViewController {
             numOfQuestions += 1
                 for label in labelsArray {
                     if(label.frame.contains(selectedPoint)) {
+                        self.wait = true
                         if label.text! == questions[0]["correct"] {
                             label.backgroundColor = .green
                             questions.remove(at: 0)
                             count += 5
                             score += 1
                             scoreLabel.text = "Score : \(score)"
-                                                        self.wait = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
@@ -125,8 +129,7 @@ class SpeedQuestionViewController: UIViewController {
                                 }
                                 self.wait = false
                             }
-
-            
+                            
                         }
                         else {
                             count -= 3
@@ -139,11 +142,10 @@ class SpeedQuestionViewController: UIViewController {
                                     label.backgroundColor = .white
                                     self.updateLabels()
                                 }
-                                
                                 self.wait = false
                             }
-                            
                         }
+                        
                     }
                 }
         } else {
