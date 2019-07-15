@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3777F9A222DCFA350037E6C4 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777F9A122DCFA350037E6C4 /* Scores.swift */; };
 		37FB62C122DA60770088A23F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62C022DA60770088A23F /* AppDelegate.swift */; };
 		37FB62C622DA60770088A23F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB62C422DA60770088A23F /* Main.storyboard */; };
 		37FB62C822DA60780088A23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FB62C722DA60780088A23F /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3777F9A122DCFA350037E6C4 /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
 		37FB62BD22DA60770088A23F /* Trivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FB62C022DA60770088A23F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37FB62C522DA60770088A23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */,
 				A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */,
 				A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */,
+				3777F9A122DCFA350037E6C4 /* Scores.swift */,
 				A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */,
 				A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */,
 				37FB62C722DA60780088A23F /* Assets.xcassets */,
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37FB62C122DA60770088A23F /* AppDelegate.swift in Sources */,
+				3777F9A222DCFA350037E6C4 /* Scores.swift in Sources */,
 				A3C2E43C22DA685700750A2F /* GeneralCategoriesViewController.swift in Sources */,
 				A3C2E44022DA687900750A2F /* ActualQuestionViewController.swift in Sources */,
 				A3C2E44622DA692D00750A2F /* SwiftyJSON.swift in Sources */,

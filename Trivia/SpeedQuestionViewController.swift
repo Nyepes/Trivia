@@ -8,10 +8,10 @@
 
 import UIKit
 
-var score = 0
 
 class SpeedQuestionViewController: UIViewController {
     
+    var labelsArray = [UILabel]()
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var firstAnswerLabel: UILabel!
     @IBOutlet weak var secondAnswerLabel: UILabel!
@@ -26,10 +26,16 @@ class SpeedQuestionViewController: UIViewController {
     var count = 30.00
     var wait = false
     let defaults = UserDefaults.standard
+    var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
+        if let savedData = defaults.object(forKey: "data") as? Data {
+            if let decoded = try? JSONDecoder().decode(Scores.self, from: savedData) {
+                self.scores = decoded
+            }
+        }
         if let url = URL(string: "https://opentdb.com/api.php?amount=50&type=multiple") {
             if let data = try? Data(contentsOf: url) {
                 let json = try! JSON(data: data)
@@ -40,7 +46,7 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        score = 0
+        scores.currentScore = 0
         resetButton.alpha = 0
         resetButton.isEnabled = false
     }
@@ -53,7 +59,7 @@ class SpeedQuestionViewController: UIViewController {
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.questionLabel.text = "Score: " + String(score)
+                    self.questionLabel.text = "Score: " + String(self.scores.currentScore)
                     self.firstAnswerLabel.text = ""
                     self.secondAnswerLabel.text = ""
                     self.thirdAnswerLabel.text = ""
@@ -115,8 +121,8 @@ class SpeedQuestionViewController: UIViewController {
                             label.backgroundColor = .green
                             questions.remove(at: 0)
                             count += 5
-                            score += 1
-                            scoreLabel.text = "Score :\(score)"
+                            scores.currentScore += 1
+                            scoreLabel.text = "Score :\(scores.currentScore)"
                                                         self.wait = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 self.updateLabels()
@@ -172,6 +178,12 @@ class SpeedQuestionViewController: UIViewController {
                 numOfQuestions = 0
                 parse(json: json)
             }
+        }
+    }
+    
+    func saveData() {
+        if let encoded = try? JSONEncoder().encode(scores.currentScore) {
+            defaults.set(encoded, forKey: "data")
         }
     }
 }

@@ -11,39 +11,46 @@ import UIKit
 class SpeedInfoViewController: UIViewController {
 
     @IBOutlet weak var highScoreLabel: UILabel!
-    var highScore = "0"
+    
     let defaults = UserDefaults.standard
+    var scores = Scores(highScore: 0, score: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let savedData = defaults.object(forKey: "data") as? Data {
-            if let decoded = try? JSONDecoder().decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: savedData) {
-                highScore = decoded
+            if let decoded = try? JSONDecoder().decode(Scores.self, from: savedData) {
+                self.scores = decoded
             }
         }
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         checkHighScore()
-        
+        self.saveData()
     }
     
     @IBAction func unwindToIinitialViewController(Segue: UIStoryboardSegue) {
+        self.saveData()
     }
     
     func checkHighScore() {
-        if Int (highScore)! < score {
-            highScore = "\(score)"
+        if scores.highScore < scores.currentScore {
+            scores.highScore = scores.currentScore
         }
-        if Int(highScore)! != 0 {
-            highScoreLabel.text = "High Score: \(highScore)"
+        if scores.highScore != 0 {
+            highScoreLabel.text = "High Score: \(scores.highScore)"
         } else {
             highScoreLabel.text = "Click Start to Play!"
         }
+            saveData()
     }
     
     func saveData() {
-        if let encoded = try? JSONEncoder().encode(highScore) {
+        if let encoded = try? JSONEncoder().encode(scores.highScore) {
             defaults.set(encoded, forKey: "data")
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! SpeedQuestionViewController
+        dvc.scores = scores
     }
 }
