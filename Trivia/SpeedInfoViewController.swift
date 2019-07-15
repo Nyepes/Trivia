@@ -19,18 +19,17 @@ class SpeedInfoViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        //checkHighScore()
+        checkHighScore()
         
     }
-//    //func checkHighScore() {
-//      //  if highScore < score {
-//        //    highScore = score
-//        //}
-//        if highScore != 0 {
-//            highScoreLabel.text = "High Score: \(highScore)"
-//        }
-//        else {
-//            highScoreLabel.text = ""
-//        }
-//    }
+    func checkHighScore() {
+        if highScore < score {
+            highScore = score
+        }
+        if highScore != 0 {
+            highScoreLabel.text = "High Score: \(highScore)"
+        } else {
+            highScoreLabel.text = ""
+        }
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-var score = Timer()
+var score = 0
 
 class SpeedQuestionViewController: UIViewController {
     
@@ -38,7 +38,7 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     func countdown() {
-        score = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ t in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ t in
             self.count -= 0.01
             self.timeRemainingLabel.text = "Time Remaining: " +  String(format: "%.2f", self.count)  + "sec"
             if self.count < 0.00 {
@@ -94,6 +94,8 @@ class SpeedQuestionViewController: UIViewController {
                             label.backgroundColor = .green
                             questions.remove(at: 0)
                             count += 5
+                            score += 1
+                            scoreLabel.text = "Score :\(score)"
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
@@ -105,7 +107,6 @@ class SpeedQuestionViewController: UIViewController {
                             label.backgroundColor = .red
                             checkAnswer(label: label)
                             questions.remove(at: 0)
-                            count -= 3
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
