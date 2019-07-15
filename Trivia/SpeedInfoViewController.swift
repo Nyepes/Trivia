@@ -11,11 +11,15 @@ import UIKit
 class SpeedInfoViewController: UIViewController {
 
     @IBOutlet weak var highScoreLabel: UILabel!
-    var highScore = 0
-    
+    var highScore = "0"
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let savedData = defaults.object(forKey: "data") as? Data {
+            if let decoded = try? JSONDecoder().decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: savedData) {
+                highScore = decoded
+            }
+        }
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -23,16 +27,20 @@ class SpeedInfoViewController: UIViewController {
         
     }
     
-    
-    
     func checkHighScore() {
-        if highScore < score {
-            highScore = score
+        if Int (highScore)! < score {
+            highScore = "\(score)"
         }
-        if highScore != 0 {
+        if Int(highScore)! != 0 {
             highScoreLabel.text = "High Score: \(highScore)"
         } else {
             highScoreLabel.text = ""
+        }
+    }
+    
+    func saveData() {
+        if let encoded = try? JSONEncoder().encode(highScore) {
+            defaults.set(encoded, forKey: "data")
         }
     }
 }

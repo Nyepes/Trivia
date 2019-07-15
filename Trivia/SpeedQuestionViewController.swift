@@ -12,7 +12,6 @@ var score = 0
 
 class SpeedQuestionViewController: UIViewController {
     
-    var labelsArray = [UILabel]()
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var firstAnswerLabel: UILabel!
     @IBOutlet weak var secondAnswerLabel: UILabel!
@@ -20,11 +19,13 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var fourthAnswerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
+    var labelsArray = [UILabel]()
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
     var count = 30.00
     var wait = false
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
