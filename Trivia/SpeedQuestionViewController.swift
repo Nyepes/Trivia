@@ -53,7 +53,7 @@ class SpeedQuestionViewController: UIViewController {
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//                    self.questionLabel.text = "Score: " + String(score)
+                    self.questionLabel.text = "Score: " + String(score)
                     self.firstAnswerLabel.text = ""
                     self.secondAnswerLabel.text = ""
                     self.thirdAnswerLabel.text = ""
