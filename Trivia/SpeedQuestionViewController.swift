@@ -23,7 +23,7 @@ class SpeedQuestionViewController: UIViewController {
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
-    var paused = false
+    var count = 30.00
     
     override func viewDidLoad() {
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
@@ -32,6 +32,19 @@ class SpeedQuestionViewController: UIViewController {
             if let data = try? Data(contentsOf: url) {
                 let json = try! JSON(data: data)
                 parse(json: json)
+                countdown()
+            }
+        }
+    }
+    
+    func countdown() {
+        score = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ t in
+            self.count -= 0.01
+            self.timeRemainingLabel.text = "Time Remaining: " +  String(format: "%.2f", self.count)  + "sec"
+            if self.count < 0.00 {
+                t.invalidate()
+                self.timeRemainingLabel.text = "You Lose"
+                self.view.backgroundColor = .red
             }
         }
     }
@@ -80,7 +93,7 @@ class SpeedQuestionViewController: UIViewController {
                         if label.text! == questions[0]["correct"] {
                             label.backgroundColor = .green
                             questions.remove(at: 0)
-                            paused = true
+                            count += 5
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
@@ -92,7 +105,7 @@ class SpeedQuestionViewController: UIViewController {
                             label.backgroundColor = .red
                             checkAnswer(label: label)
                             questions.remove(at: 0)
-                            paused = true
+                            count -= 3
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
