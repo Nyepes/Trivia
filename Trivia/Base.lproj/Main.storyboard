@@ -427,6 +427,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="aVu-e3-IJ1"/>
         <segue reference="A50-Rj-yhh"/>
     </inferredMetricsTieBreakers>
 </document>
