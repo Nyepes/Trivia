@@ -26,6 +26,11 @@ class SpeedInfoViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         checkHighScore()
         self.saveData()
+        if let savedData = defaults.object(forKey: "data") as? Data {
+            if let decoded = try? JSONDecoder().decode(Scores.self, from: savedData) {
+                self.scores = decoded
+            }
+        }
     }
     
     @IBAction func unwindToIinitialViewController(Segue: UIStoryboardSegue) {
@@ -45,7 +50,7 @@ class SpeedInfoViewController: UIViewController {
     }
     
     func saveData() {
-        if let encoded = try? JSONEncoder().encode(scores.highScore) {
+        if let encoded = try? JSONEncoder().encode(scores) {
             defaults.set(encoded, forKey: "data")
         }
     }

@@ -24,9 +24,11 @@ class SpeedQuestionViewController: UIViewController {
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
+    let defaults = UserDefaults.standard
     var count = 30.00
     var wait = false
     var ended = false
+    var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
         resetButton.alpha = 0
@@ -62,7 +64,7 @@ class SpeedQuestionViewController: UIViewController {
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                    self.questionLabel.text = "Score: " + String(score)
+                    self.questionLabel.text = "Score: " + String(self.scores.currentScore)
                     self.firstAnswerLabel.text = ""
                     self.secondAnswerLabel.text = ""
                     self.thirdAnswerLabel.text = ""
@@ -116,6 +118,7 @@ class SpeedQuestionViewController: UIViewController {
             return
         }
         if numOfQuestions < 48 {
+            
             let selectedPoint = sender.location(in: view)
             numOfQuestions += 1
                 for label in labelsArray {
@@ -127,7 +130,8 @@ class SpeedQuestionViewController: UIViewController {
                             count += 5
                             scores.currentScore += 1
                             scoreLabel.text = "Score :\(scores.currentScore)"
-                                                        self.wait = true
+                            self.wait = true
+                            saveData()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
@@ -143,6 +147,7 @@ class SpeedQuestionViewController: UIViewController {
                             checkAnswer(label: label)
                             questions.remove(at: 0)
                             self.wait = true
+                            saveData()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
@@ -187,6 +192,10 @@ class SpeedQuestionViewController: UIViewController {
         if let encoded = try? JSONEncoder().encode(scores.currentScore) {
             defaults.set(encoded, forKey: "data")
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! SpeedInfoViewController
+        dvc.scores = scores
     }
 }
 
