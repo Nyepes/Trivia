@@ -80,14 +80,14 @@ class ActualQuestionViewController: UIViewController {
         }
         if(num == correctIndex) {
             labelChosen.backgroundColor = .green
-            answeredArray[questionNum] = 1
-            count[categoryNum] += 1
-            totalCount[categoryNum] += 1
+            answeredArray[genreNum][questionNum] = 1
+            count[genreNum] += 1
+            totalCount[genreNum] += 1
         } else {
             labelChosen.backgroundColor = .red
             correctLabel.backgroundColor = .green
-            answeredArray[questionNum] = 2
-            totalCount[categoryNum] += 1
+            answeredArray[genreNum][questionNum] = 2
+            totalCount[genreNum] += 1
         }
         answered = true
     }

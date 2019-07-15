@@ -8,13 +8,14 @@
 
 import UIKit
 
-var count = [0, 0, 0, 0, 0]
-var totalCount = [0, 0, 0, 0, 0]
-var categoryNum = -1
+var count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+var totalCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+var genreNum = -1
+var numGenre = 14
 
 class GeneralCategoriesViewController: UITableViewController {
     
-    var genre = ["Sports", "History", "Science", "Music", "Politics"]
+    var genre = ["Sports", "History", "Science", "Music", "Politics", "Books", "Film", "Video Games", "Math", "Geography", "Art", "Celebrities", "Animals", "Japanese Anime and Manga"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class GeneralCategoriesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! GeneralQuestionsViewController
         let index = tableView.indexPathForSelectedRow?.row
-        categoryNum = index!
+        genreNum = index!
         dvc.genre = genre[index!]
     }
 }

@@ -8,29 +8,55 @@
 
 import UIKit
 
-var answeredArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
+var answeredArray = [[Int]]()
+//FIX QUESTION COLOR
 class GeneralQuestionsViewController: UITableViewController {
     
     var genre = ""
     var questionArray = [[String: String]]()
     
     override func viewDidLoad() {
+        for i in 0..<numGenre {
+            var arr = [Int]()
+            for j in 0...14 {
+                arr.append(0)
+            }
+            answeredArray.append(arr)
+        }
         super.viewDidLoad()
         self.title = "Trivia Questions"
-        var genreNum = 0
-        if genre == "Sports" {
-            genreNum = 21
-        } else if genre == "History" {
-            genreNum = 23
-        } else if genre == "Science" {
-            genreNum = 17
-        } else if genre == "Music" {
-            genreNum = 12
-        } else if genre == "Politics" {
-            genreNum = 24
+        var urlNum = 0
+        if genreNum == 0 {
+            urlNum = 21
+        } else if genreNum == 1 {
+            urlNum = 23
+        } else if genreNum == 2 {
+            urlNum = 17
+        } else if genreNum == 3 {
+            urlNum = 12
+        } else if genreNum == 4 {
+            urlNum = 24
+        } else if genreNum == 5 {
+            urlNum = 10
+        } else if genreNum == 6 {
+            urlNum = 11
+        } else if genreNum == 7 {
+            urlNum = 15
+        } else if genreNum == 8 {
+            urlNum = 19
+        } else if genreNum == 9 {
+            urlNum = 22
+        } else if genreNum == 10 {
+            urlNum = 25
+        } else if genreNum == 11 {
+            urlNum = 26
+        } else if genreNum == 12 {
+            urlNum = 27
+        } else if genreNum == 13 {
+            urlNum = 31
         }
-        let query = "https://opentdb.com/api.php?amount=15&category=\(genreNum)&difficulty=medium&type=multiple"
+            
+        let query = "https://opentdb.com/api.php?amount=15&category=\(urlNum)&difficulty=medium&type=multiple"
         DispatchQueue.global(qos: .userInitiated).async { //work on separate thread
             [unowned self] in
             if let url = URL(string: query) {
@@ -88,9 +114,9 @@ class GeneralQuestionsViewController: UITableViewController {
         cell.textLabel?.text = "Question \(indexPath.row + 1)"
         print(indexPath)
         print(answeredArray)
-        if(answeredArray[indexPath.row] == 1) {
+        if(answeredArray[genreNum][indexPath.row] == 1) {
             cell.textLabel?.textColor = .green
-        } else if(answeredArray[indexPath.row] == 2) {
+        } else if(answeredArray[genreNum][indexPath.row] == 2) {
             cell.textLabel?.textColor = .red
         }
         return cell
