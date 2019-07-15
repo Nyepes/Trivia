@@ -24,6 +24,7 @@ class SpeedQuestionViewController: UIViewController {
     var numOfQuestions = 0
     var correctAnswer = ""
     var count = 30.00
+    var wait = false
     
     override func viewDidLoad() {
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
@@ -35,6 +36,10 @@ class SpeedQuestionViewController: UIViewController {
                 countdown()
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        score = 0
     }
     
     func countdown() {
@@ -88,6 +93,10 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     @IBAction func touched(_ sender: UITapGestureRecognizer) {
+        print(wait)
+        if(wait) {
+            return
+        }
         if numOfQuestions < 48 {
             let selectedPoint = sender.location(in: view)
             numOfQuestions += 1
@@ -99,23 +108,32 @@ class SpeedQuestionViewController: UIViewController {
                             count += 5
                             score += 1
                             scoreLabel.text = "Score :\(score)"
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                        self.wait = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
                                 }
+                                self.wait = false
                             }
+
+                            
                         }
                         else {
+                            count -= 3
                             label.backgroundColor = .red
                             checkAnswer(label: label)
                             questions.remove(at: 0)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.wait = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
                                     self.updateLabels()
                                 }
+                                
+                                self.wait = false
                             }
+                            
                         }
                     }
                 }
