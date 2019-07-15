@@ -44,7 +44,10 @@ class SpeedQuestionViewController: UIViewController {
             if self.count < 0.00 {
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
-                self.view.backgroundColor = .red
+//                self.view.backgroundColor = .red
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                   self.performSegue(withIdentifier: "backToInfo", sender: self)
+                }
             }
         }
     }
@@ -116,15 +119,7 @@ class SpeedQuestionViewController: UIViewController {
                         }
                     }
                 }
-//            }
-//            else {
-//
-//                }
-//                paused = true
-//                updateLabels()
-//            }
-        }
-        else {
+        } else {
             updateParse()
         }
     }
