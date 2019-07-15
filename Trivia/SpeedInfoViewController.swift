@@ -22,6 +22,9 @@ class SpeedInfoViewController: UIViewController {
         checkHighScore()
         
     }
+    
+    
+    
     func checkHighScore() {
         if highScore < score {
             highScore = score

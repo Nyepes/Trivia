@@ -46,7 +46,7 @@ class SpeedQuestionViewController: UIViewController {
                 self.timeRemainingLabel.text = "You Lose"
 //                self.view.backgroundColor = .red
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                   self.performSegue(withIdentifier: "backToInfo", sender: self)
+//                   self.performSegue(withIdentifier: "backToInfo", sender: self)
                 }
             }
         }
