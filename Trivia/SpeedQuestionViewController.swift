@@ -116,7 +116,7 @@ class SpeedQuestionViewController: UIViewController {
                             questions.remove(at: 0)
                             count += 5
                             score += 1
-                            scoreLabel.text = "Score :\(score)"
+                            scoreLabel.text = "Score : \(score)"
                                                         self.wait = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 self.updateLabels()
