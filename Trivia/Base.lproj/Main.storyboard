@@ -255,6 +255,7 @@
                         <outlet property="secondAnswerLabel" destination="Fgt-Sz-wv9" id="pLb-ET-HWO"/>
                         <outlet property="thirdAnswerLabel" destination="jXg-pR-fGo" id="hkt-yL-XcB"/>
                         <outlet property="timeRemainingLabel" destination="nZj-3G-Dld" id="F3u-xo-eCu"/>
+                        <segue destination="oQp-h9-1Yr" kind="show" identifier="backToInfo" id="A50-Rj-yhh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4N-TG-Kv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,4 +426,7 @@
             <point key="canvasLocation" x="50.724637681159422" y="45.535714285714285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="A50-Rj-yhh"/>
+    </inferredMetricsTieBreakers>
 </document>
