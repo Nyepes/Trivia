@@ -24,12 +24,22 @@ class SpeedQuestionViewController: UIViewController {
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
+    let defaults = UserDefaults.standard
     var count = 30.00
     var wait = false
+    var ended = false
+    var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
+        resetButton.alpha = 0
+        resetButton.isEnabled = false
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
+        if let savedData = defaults.object(forKey: "data") as? Data {
+            if let decoded = try? JSONDecoder().decode(Scores.self, from: savedData) {
+                self.scores = decoded
+            }
+        }
         if let url = URL(string: "https://opentdb.com/api.php?amount=50&type=multiple") {
             if let data = try? Data(contentsOf: url) {
                 let json = try! JSON(data: data)
@@ -40,7 +50,7 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        score = 0
+        scores.currentScore = 0
         resetButton.alpha = 0
         resetButton.isEnabled = false
     }
@@ -50,10 +60,11 @@ class SpeedQuestionViewController: UIViewController {
             self.count -= 0.01
             self.timeRemainingLabel.text = "Time Remaining: " +  String(format: "%.2f", self.count)  + "sec"
             if self.count < 0.00 {
+                self.ended = true
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.questionLabel.text = "Score: " + String(score)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                    self.questionLabel.text = "Score: " + String(self.scores.currentScore)
                     self.firstAnswerLabel.text = ""
                     self.secondAnswerLabel.text = ""
                     self.thirdAnswerLabel.text = ""
@@ -61,6 +72,7 @@ class SpeedQuestionViewController: UIViewController {
                     self.wait = true
                     self.resetButton.alpha = 1
                     self.resetButton.isEnabled = true
+                    self.scoreLabel.text = ""
                 }
             }
         }
@@ -102,22 +114,24 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     @IBAction func touched(_ sender: UITapGestureRecognizer) {
-        print(wait)
-        if(wait) {
+        if(wait || ended) {
             return
         }
         if numOfQuestions < 48 {
+            
             let selectedPoint = sender.location(in: view)
             numOfQuestions += 1
                 for label in labelsArray {
                     if(label.frame.contains(selectedPoint)) {
+                        self.wait = true
                         if label.text! == questions[0]["correct"] {
                             label.backgroundColor = .green
                             questions.remove(at: 0)
                             count += 5
-                            score += 1
-                            scoreLabel.text = "Score : \(score)"
-                                                        self.wait = true
+                            scores.currentScore += 1
+                            scoreLabel.text = "Score :\(scores.currentScore)"
+                            self.wait = true
+                            saveData()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
@@ -125,8 +139,7 @@ class SpeedQuestionViewController: UIViewController {
                                 }
                                 self.wait = false
                             }
-
-            
+                            
                         }
                         else {
                             count -= 3
@@ -134,16 +147,16 @@ class SpeedQuestionViewController: UIViewController {
                             checkAnswer(label: label)
                             questions.remove(at: 0)
                             self.wait = true
+                            saveData()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
                                     self.updateLabels()
                                 }
-                                
                                 self.wait = false
                             }
-                            
                         }
+                        
                     }
                 }
         } else {
@@ -173,6 +186,16 @@ class SpeedQuestionViewController: UIViewController {
                 parse(json: json)
             }
         }
+    }
+    
+    func saveData() {
+        if let encoded = try? JSONEncoder().encode(scores.currentScore) {
+            defaults.set(encoded, forKey: "data")
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! SpeedInfoViewController
+        dvc.scores = scores
     }
 }
 
