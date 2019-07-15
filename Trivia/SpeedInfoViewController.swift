@@ -15,25 +15,22 @@ class SpeedInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if highScore == 0 {
-            highScoreLabel.text = ""
-            
-        }
-        else {
-            highScoreLabel.text = "High Score: \(highScore)"
-        }
+        
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        //checkHighScore()
+        
     }
-    */
-
+//    //func checkHighScore() {
+//      //  if highScore < score {
+//        //    highScore = score
+//        //}
+//        if highScore != 0 {
+//            highScoreLabel.text = "High Score: \(highScore)"
+//        }
+//        else {
+//            highScoreLabel.text = ""
+//        }
+//    }
 }
