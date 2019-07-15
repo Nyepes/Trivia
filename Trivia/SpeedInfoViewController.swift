@@ -33,7 +33,7 @@ class SpeedInfoViewController: UIViewController {
         if highScore != 0 {
             highScoreLabel.text = "High Score: \(highScore)"
         } else {
-            highScoreLabel.text = ""
+            highScoreLabel.text = "Click Start to Play!"
         }
     }
 }
