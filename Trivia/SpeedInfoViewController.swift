@@ -27,6 +27,9 @@ class SpeedInfoViewController: UIViewController {
         
     }
     
+    @IBAction func unwindToIinitialViewController(Segue: UIStoryboardSegue) {
+    }
+    
     func checkHighScore() {
         if Int (highScore)! < score {
             highScore = "\(score)"
