@@ -135,6 +135,7 @@ private let characterEntities : [ Substring : Character ] = [
     "&quot;"    : "\"",
     "&amp;"     : "&",
     "&apos;"    : "'",
+    "&acute;"   : "\u{0000}",
     "&lt;"      : "<",
     "&gt;"      : ">",
     
