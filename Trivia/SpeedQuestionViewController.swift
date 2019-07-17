@@ -64,7 +64,7 @@ class SpeedQuestionViewController: UIViewController {
                 self.ended = true
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.questionLabel.text = "Score: " + String(self.scores.currentScore)
                     self.firstAnswerLabel.text = ""
                     self.secondAnswerLabel.text = ""
@@ -137,7 +137,7 @@ class SpeedQuestionViewController: UIViewController {
                             streakLabel.text = "Streak: \(scores.streak)"
                             self.wait = true
                             saveData()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
@@ -154,7 +154,7 @@ class SpeedQuestionViewController: UIViewController {
                             self.wait = true
                             saveData()
                             scores.streak = 0
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .white
                                     self.updateLabels()
