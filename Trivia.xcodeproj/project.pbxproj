@@ -14,6 +14,7 @@
 		37FB62CB22DA60780088A23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FB62C922DA60780088A23F /* LaunchScreen.storyboard */; };
 		37FB62D622DA60780088A23F /* TriviaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62D522DA60780088A23F /* TriviaTests.swift */; };
 		37FB62E122DA60780088A23F /* TriviaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB62E022DA60780088A23F /* TriviaUITests.swift */; };
+		A32AD83522DF722A00F0DFD0 /* SpeedResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AD83422DF722A00F0DFD0 /* SpeedResultViewController.swift */; };
 		A3C2E43A22DA683F00750A2F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43922DA683F00750A2F /* StartViewController.swift */; };
 		A3C2E43C22DA685700750A2F /* GeneralCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */; };
 		A3C2E43E22DA686800750A2F /* GeneralQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */; };
@@ -54,6 +55,7 @@
 		37FB62DC22DA60780088A23F /* TriviaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TriviaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FB62E022DA60780088A23F /* TriviaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaUITests.swift; sourceTree = "<group>"; };
 		37FB62E222DA60780088A23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A32AD83422DF722A00F0DFD0 /* SpeedResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedResultViewController.swift; sourceTree = "<group>"; };
 		A3C2E43922DA683F00750A2F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCategoriesViewController.swift; sourceTree = "<group>"; };
 		A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralQuestionsViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				3777F9A122DCFA350037E6C4 /* Scores.swift */,
 				A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */,
 				A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */,
+				A32AD83422DF722A00F0DFD0 /* SpeedResultViewController.swift */,
 				37FB62C722DA60780088A23F /* Assets.xcassets */,
 				37FB62C922DA60780088A23F /* LaunchScreen.storyboard */,
 				37FB62CC22DA60780088A23F /* Info.plist */,
@@ -282,6 +285,7 @@
 				A3C2E43C22DA685700750A2F /* GeneralCategoriesViewController.swift in Sources */,
 				A3C2E44022DA687900750A2F /* ActualQuestionViewController.swift in Sources */,
 				A3C2E44622DA692D00750A2F /* SwiftyJSON.swift in Sources */,
+				A32AD83522DF722A00F0DFD0 /* SpeedResultViewController.swift in Sources */,
 				A3C2E43A22DA683F00750A2F /* StartViewController.swift in Sources */,
 				A3C2E44222DA689400750A2F /* SpeedInfoViewController.swift in Sources */,
 				A3C2E43E22DA686800750A2F /* GeneralQuestionsViewController.swift in Sources */,

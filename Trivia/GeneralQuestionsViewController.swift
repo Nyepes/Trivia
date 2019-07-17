@@ -139,6 +139,9 @@ private let characterEntities : [ Substring : Character ] = [
     "&acute;"   : "\u{0000}",
     "&lt;"      : "<",
     "&gt;"      : ">",
+    "&Uuml;"    : "U",
+    "&uuml;"    : "u",
+    "&rsquo;"   : "'",
     
     // HTML character entity references:
     "&nbsp;"    : "\u{00a0}",

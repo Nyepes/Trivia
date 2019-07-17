@@ -18,9 +18,7 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var fourthAnswerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
-    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var streakLabel: UILabel!
-    @IBOutlet weak var shareResultsButton: UIButton!
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
@@ -32,8 +30,6 @@ class SpeedQuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         scores.currentScore = 0
-        resetButton.alpha = 0
-        resetButton.isEnabled = false
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
         if let savedData = defaults.object(forKey: "data") as? Data {
@@ -53,8 +49,6 @@ class SpeedQuestionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         scores.currentScore = 0
-        resetButton.alpha = 0
-        resetButton.isEnabled = false
     }
     
     func countdown() {
@@ -66,17 +60,7 @@ class SpeedQuestionViewController: UIViewController {
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.questionLabel.text = "Score: " + String(self.scores.currentScore)
-                    self.firstAnswerLabel.text = ""
-                    self.secondAnswerLabel.text = ""
-                    self.thirdAnswerLabel.text = ""
-                    self.fourthAnswerLabel.text = ""
-                    self.wait = true
-                    self.resetButton.alpha = 1
-                    self.resetButton.isEnabled = true
-                    self.scoreLabel.text = ""
-                    self.shareResultsButton.alpha = 1
-                   
+                    self.performSegue(withIdentifier: "showResults", sender: nil)
                 }
             }
         }
@@ -109,7 +93,6 @@ class SpeedQuestionViewController: UIViewController {
         questionLabel.text = questions[0]["question"]
         var answersArray = [questions[0]["correct"], questions[0]["wrong1"], questions[0]["wrong2"], questions[0]["wrong3"]]
         answersArray.shuffle()
-        print(answersArray)
         firstAnswerLabel.text = answersArray[0]
         secondAnswerLabel.text = answersArray[1]
         thirdAnswerLabel.text = answersArray[2]
@@ -202,17 +185,12 @@ class SpeedQuestionViewController: UIViewController {
             defaults.set(encoded, forKey: "data")
         }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc = segue.destination as! SpeedInfoViewController
-        dvc.scores = scores
-    }
     
-    func displayShareSheet(shareContent:String) {
-        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: {})
-    }
-    @IBAction func onShareResultsClicked(_ sender: UIButton) {
-         self.displayShareSheet(shareContent: self.questionLabel.text!)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let dvc = segue.destination as! SpeedInfoViewController
+//        dvc.scores = scores
+        let dvc2 = segue.destination as! SpeedResultViewController
+        dvc2.score = scores.currentScore
     }
 }
 

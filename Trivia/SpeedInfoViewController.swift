@@ -24,6 +24,7 @@ class SpeedInfoViewController: UIViewController {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
         checkHighScore()
         self.saveData()
         if let savedData = defaults.object(forKey: "data") as? Data {
