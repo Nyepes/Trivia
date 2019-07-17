@@ -143,7 +143,7 @@ class SpeedQuestionViewController: UIViewController {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 self.updateLabels()
                                 for label in self.labelsArray {
-                                    label.backgroundColor = .white
+                                    label.backgroundColor = .clear
                                 }
                                 self.wait = false
                             }
@@ -159,7 +159,7 @@ class SpeedQuestionViewController: UIViewController {
                             scores.streak = 0
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 for label in self.labelsArray {
-                                    label.backgroundColor = .white
+                                    label.backgroundColor = .clear
                                     self.updateLabels()
                                 }
                                 self.wait = false

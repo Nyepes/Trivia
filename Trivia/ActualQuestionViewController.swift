@@ -29,40 +29,40 @@ class ActualQuestionViewController: UIViewController {
         switch correctIndex {
         case 0:
             answer1Label.text = question["correct"]
-            answer1Label.font = UIFont(name:"futura", size: 24.0)
+            answer1Label.font = UIFont(name:"futura", size: 23.0)
             correctLabel = answer1Label
         case 1:
             answer2Label.text = question["correct"]
-            answer2Label.font = UIFont(name:"futura", size: 24.0)
+            answer2Label.font = UIFont(name:"futura", size: 23.0)
             correctLabel = answer2Label
         case 2:
             answer3Label.text = question["correct"]
-            answer3Label.font = UIFont(name:"futura", size: 24.0)
+            answer3Label.font = UIFont(name:"futura", size: 23.0)
             correctLabel = answer3Label
         default:
             answer4Label.text = question["correct"]
-            answer4Label.font = UIFont(name:"futura", size: 24.0)
+            answer4Label.font = UIFont(name:"futura", size: 23.0)
             correctLabel = answer4Label
         }
         var curr = 1
         if(answer1Label.text!.count == 0) {
             answer1Label.text = question["wrong\(curr)"]
-            answer1Label.font = UIFont(name:"futura", size: 24.0)
+            answer1Label.font = UIFont(name:"futura", size: 23.0)
             curr += 1
         }
         if(answer2Label.text!.count == 0) {
             answer2Label.text = question["wrong\(curr)"]
-            answer2Label.font = UIFont(name:"futura", size: 24.0)
+            answer2Label.font = UIFont(name:"futura", size: 23.0)
             curr += 1
         }
         if(answer3Label.text!.count == 0) {
             answer3Label.text = question["wrong\(curr)"]
-            answer3Label.font = UIFont(name:"futura", size: 24.0)
+            answer3Label.font = UIFont(name:"futura", size: 23.0)
             curr += 1
         }
         if(answer4Label.text!.count == 0) {
             answer4Label.text = question["wrong\(curr)"]
-            answer4Label.font = UIFont(name:"futura", size: 24.0)
+            answer4Label.font = UIFont(name:"futura", size: 23.0)
             curr += 1
         }
     }
