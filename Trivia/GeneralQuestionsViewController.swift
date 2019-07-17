@@ -56,7 +56,7 @@ class GeneralQuestionsViewController: UITableViewController {
             urlNum = 31
         }
             
-        let query = "https://opentdb.com/api.php?amount=15&category=\(urlNum)&difficulty=medium&type=multiple"
+        let query = "https://opentdb.com/api.php?amount=15&category=\(urlNum)&type=multiple"
         DispatchQueue.global(qos: .userInitiated).async { //work on separate thread
             [unowned self] in
             if let url = URL(string: query) {
