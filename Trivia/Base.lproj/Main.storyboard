@@ -236,6 +236,13 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-I6-6PZ">
+                                <rect key="frame" x="18" y="677" width="346" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -251,6 +258,7 @@
                         <outlet property="resetButton" destination="Kxp-Ra-nsy" id="ZcR-0V-vHj"/>
                         <outlet property="scoreLabel" destination="l5p-Bh-EAG" id="NHy-ns-Pc7"/>
                         <outlet property="secondAnswerLabel" destination="Fgt-Sz-wv9" id="pLb-ET-HWO"/>
+                        <outlet property="streakLabel" destination="6Y2-I6-6PZ" id="cCP-Af-y2c"/>
                         <outlet property="thirdAnswerLabel" destination="jXg-pR-fGo" id="hkt-yL-XcB"/>
                         <outlet property="timeRemainingLabel" destination="nZj-3G-Dld" id="F3u-xo-eCu"/>
                         <segue destination="oQp-h9-1Yr" kind="show" identifier="backToInfo" id="A50-Rj-yhh"/>

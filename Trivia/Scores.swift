@@ -12,6 +12,7 @@ class Scores: Codable {
     
     var highScore = 0
     var currentScore = 0
+    var streak = 0
     
     init(highScore: Int, score: Int) {
         self.highScore = highScore
