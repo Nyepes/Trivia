@@ -17,7 +17,6 @@
 		A32AD83522DF722A00F0DFD0 /* SpeedResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AD83422DF722A00F0DFD0 /* SpeedResultViewController.swift */; };
 		A3C2E43A22DA683F00750A2F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43922DA683F00750A2F /* StartViewController.swift */; };
 		A3C2E43C22DA685700750A2F /* GeneralCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */; };
-		A3C2E43E22DA686800750A2F /* GeneralQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */; };
 		A3C2E44022DA687900750A2F /* ActualQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */; };
 		A3C2E44222DA689400750A2F /* SpeedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */; };
 		A3C2E44422DA68A200750A2F /* SpeedQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */; };
@@ -58,7 +57,6 @@
 		A32AD83422DF722A00F0DFD0 /* SpeedResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedResultViewController.swift; sourceTree = "<group>"; };
 		A3C2E43922DA683F00750A2F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCategoriesViewController.swift; sourceTree = "<group>"; };
-		A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralQuestionsViewController.swift; sourceTree = "<group>"; };
 		A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualQuestionViewController.swift; sourceTree = "<group>"; };
 		A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedInfoViewController.swift; sourceTree = "<group>"; };
 		A3C2E44322DA68A200750A2F /* SpeedQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedQuestionViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				37FB62C422DA60770088A23F /* Main.storyboard */,
 				A3C2E43922DA683F00750A2F /* StartViewController.swift */,
 				A3C2E43B22DA685700750A2F /* GeneralCategoriesViewController.swift */,
-				A3C2E43D22DA686800750A2F /* GeneralQuestionsViewController.swift */,
 				A3C2E43F22DA687900750A2F /* ActualQuestionViewController.swift */,
 				3777F9A122DCFA350037E6C4 /* Scores.swift */,
 				A3C2E44122DA689400750A2F /* SpeedInfoViewController.swift */,
@@ -288,7 +285,6 @@
 				A32AD83522DF722A00F0DFD0 /* SpeedResultViewController.swift in Sources */,
 				A3C2E43A22DA683F00750A2F /* StartViewController.swift in Sources */,
 				A3C2E44222DA689400750A2F /* SpeedInfoViewController.swift in Sources */,
-				A3C2E43E22DA686800750A2F /* GeneralQuestionsViewController.swift in Sources */,
 				A3C2E44422DA68A200750A2F /* SpeedQuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
