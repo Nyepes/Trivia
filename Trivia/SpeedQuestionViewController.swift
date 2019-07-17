@@ -76,6 +76,7 @@ class SpeedQuestionViewController: UIViewController {
                     self.resetButton.alpha = 1
                     self.resetButton.isEnabled = true
                     self.scoreLabel.text = ""
+                    self.displayShareSheet(shareContent: self.questionLabel.text!)
                 }
             }
         }
@@ -204,6 +205,11 @@ class SpeedQuestionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! SpeedInfoViewController
         dvc.scores = scores
+    }
+    
+    func displayShareSheet(shareContent:String) {
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: {})
     }
 }
 
