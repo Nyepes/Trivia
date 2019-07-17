@@ -66,6 +66,9 @@ class ActualQuestionViewController: UIViewController {
         for label in labelArray {
             if(label.frame.contains(selectedPoint)) {
                 checkAnswer(labelChosen: label, num: count)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                    self.performSegue(withIdentifier: "unwindSegue", sender: Any?.self)
+                }
                 return
             }
             count += 1

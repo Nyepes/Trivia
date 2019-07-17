@@ -94,6 +94,9 @@ class GeneralQuestionsViewController: UITableViewController {
         }
     }
     
+    @IBAction func unwindToGeneralIinitialViewController(Segue: UIStoryboardSegue) {
+    }
+    
     func loadError() {
         DispatchQueue.main.async { //work on separate thread
             [unowned self] in

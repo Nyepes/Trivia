@@ -415,9 +415,11 @@
                         <outlet property="answer3Label" destination="AJr-1k-RLn" id="VwE-m5-MaP"/>
                         <outlet property="answer4Label" destination="r5v-8E-rhG" id="06X-Rg-Kb6"/>
                         <outlet property="questionLabel" destination="yjV-kC-CDs" id="aA1-8l-RAr"/>
+                        <segue destination="Hz1-hF-Nna" kind="unwind" identifier="unwindSegue" unwindAction="unwindToGeneralIinitialViewControllerWithSegue:" id="d26-jV-9bM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jO-tY-2oL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Hz1-hF-Nna" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="5Tz-z4-NiX">
                     <connections>
                         <action selector="touhced:" destination="PDU-g8-DDn" id="91R-gl-b2g"/>
