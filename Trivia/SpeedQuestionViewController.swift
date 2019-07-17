@@ -200,7 +200,7 @@ class SpeedQuestionViewController: UIViewController {
 //        let dvc = segue.destination as! SpeedInfoViewController
 //        dvc.scores = scores
         let dvc2 = segue.destination as! SpeedResultViewController
-        dvc2.score = scores.currentScore
+        dvc2.scores = scores
     }
 }
 
