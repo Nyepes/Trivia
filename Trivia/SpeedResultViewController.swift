@@ -40,11 +40,9 @@ class SpeedResultViewController: UIViewController {
     func checkforwin () {
         if (scores.currentScore > scores.highScore && scores.currentScore > 5) || scores.currentScore > 10 {
             meme.image = UIImage(named: "win")
-            flippingTables.text = ""
             
         } else {
             meme.image = UIImage(named: "lose")
-            flippingTables.text = "(╯°□°）╯︵ ┻━┻"
         }
     }
 
