@@ -115,8 +115,6 @@ class GeneralQuestionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "Question \(indexPath.row + 1)"
-        print(indexPath)
-        print(answeredArray)
         if(answeredArray[genreNum][indexPath.row] == 1) {
             cell.textLabel?.textColor = .green
         } else if(answeredArray[genreNum][indexPath.row] == 2) {
