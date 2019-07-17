@@ -29,16 +29,17 @@ class SpeedQuestionViewController: UIViewController {
     var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
-        firstAnswerLabel.adjustsFontSizeToFitWidth = true
-        firstAnswerLabel.adjustsFontForContentSizeCategory = true
-        secondAnswerLabel.adjustsFontSizeToFitWidth = true
-        secondAnswerLabel.adjustsFontForContentSizeCategory = true
-        thirdAnswerLabel.adjustsFontSizeToFitWidth = true
-        thirdAnswerLabel.adjustsFontForContentSizeCategory = true
-        fourthAnswerLabel.adjustsFontSizeToFitWidth = true
-        fourthAnswerLabel.adjustsFontForContentSizeCategory = true
-        questionLabel.adjustsFontSizeToFitWidth = true
-        questionLabel.adjustsFontForContentSizeCategory = true
+        //Do I need this??
+//        firstAnswerLabel.adjustsFontSizeToFitWidth = true
+//        firstAnswerLabel.adjustsFontForContentSizeCategory = true
+//        secondAnswerLabel.adjustsFontSizeToFitWidth = true
+//        secondAnswerLabel.adjustsFontForContentSizeCategory = true
+//        thirdAnswerLabel.adjustsFontSizeToFitWidth = true
+//        thirdAnswerLabel.adjustsFontForContentSizeCategory = true
+//        fourthAnswerLabel.adjustsFontSizeToFitWidth = true
+//        fourthAnswerLabel.adjustsFontForContentSizeCategory = true
+//        questionLabel.adjustsFontSizeToFitWidth = true
+//        questionLabel.adjustsFontForContentSizeCategory = true
         scores.currentScore = 0
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
@@ -93,10 +94,6 @@ class SpeedQuestionViewController: UIViewController {
         else {
             updateParse()
         }
-    }
-    
-    func startGame() {
-        
     }
     
     func updateLabels() {

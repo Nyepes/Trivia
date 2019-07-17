@@ -43,6 +43,7 @@ class GeneralCategoriesViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let index = tableView.indexPathForSelectedRow?.row
         genreNum = index!
     }
 }

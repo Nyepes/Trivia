@@ -15,58 +15,17 @@ class ActualQuestionViewController: UIViewController {
     @IBOutlet weak var answer3Label: UILabel!
     @IBOutlet weak var answer4Label: UILabel!
     
-    var genre = ""
     var questionArray = [[String: String]]()
     var questionNum = 0
     var correctIndex = 0
     var correctLabel = UILabel()
-    var labelArray = [UILabel]()
+    var labelsArray = [UILabel]()
     
     override func viewDidLoad() {
         loadData()
-        labelArray = [answer1Label, answer2Label, answer3Label, answer4Label]
+        questionArray.shuffle()
+        labelsArray = [answer1Label, answer2Label, answer3Label, answer4Label]
         super.viewDidLoad()
-        questionLabel.text = question["question"]
-        correctIndex = Int.random(in: 0...3)
-        switch correctIndex {
-        case 0:
-            answer1Label.text = question["correct"]
-            answer1Label.font = UIFont(name:"futura", size: 23.0)
-            correctLabel = answer1Label
-        case 1:
-            answer2Label.text = question["correct"]
-            answer2Label.font = UIFont(name:"futura", size: 23.0)
-            correctLabel = answer2Label
-        case 2:
-            answer3Label.text = question["correct"]
-            answer3Label.font = UIFont(name:"futura", size: 23.0)
-            correctLabel = answer3Label
-        default:
-            answer4Label.text = question["correct"]
-            answer4Label.font = UIFont(name:"futura", size: 23.0)
-            correctLabel = answer4Label
-        }
-        var curr = 1
-        if(answer1Label.text!.count == 0) {
-            answer1Label.text = question["wrong\(curr)"]
-            answer1Label.font = UIFont(name:"futura", size: 23.0)
-            curr += 1
-        }
-        if(answer2Label.text!.count == 0) {
-            answer2Label.text = question["wrong\(curr)"]
-            answer2Label.font = UIFont(name:"futura", size: 23.0)
-            curr += 1
-        }
-        if(answer3Label.text!.count == 0) {
-            answer3Label.text = question["wrong\(curr)"]
-            answer3Label.font = UIFont(name:"futura", size: 23.0)
-            curr += 1
-        }
-        if(answer4Label.text!.count == 0) {
-            answer4Label.text = question["wrong\(curr)"]
-            answer4Label.font = UIFont(name:"futura", size: 23.0)
-            curr += 1
-        }
     }
     
     func loadData() {
@@ -101,7 +60,7 @@ class ActualQuestionViewController: UIViewController {
             urlNum = 31
         }
         
-        let query = "https://opentdb.com/api.php?amount=15&category=\(urlNum)&type=multiple"
+        let query = "https://opentdb.com/api.php?amount=18&category=\(urlNum)&type=multiple"
         DispatchQueue.global(qos: .userInitiated).async { //work on separate thread
             [unowned self] in
             if let url = URL(string: query) {
@@ -130,8 +89,18 @@ class ActualQuestionViewController: UIViewController {
         }
         DispatchQueue.main.async { //comes back to main thread
             [unowned self] in
-            self.tableView.reloadData()
+            self.updateLabels()
         }
+    }
+    
+    func updateLabels() {
+        questionLabel.text = questionArray[0]["question"]
+        var answersArray = [questionArray[0]["correct"], questionArray[0]["wrong1"], questionArray[0]["wrong2"], questionArray[0]["wrong3"]]
+        answersArray.shuffle()
+        answer1Label.text = answersArray[0]
+        answer2Label.text = answersArray[1]
+        answer3Label.text = answersArray[2]
+        answer4Label.text = answersArray[3]
     }
     
     func loadError() {
@@ -145,39 +114,59 @@ class ActualQuestionViewController: UIViewController {
         }
     }
     
+    var numOfQuestions = 0
+    var wait = false
+    
     @IBAction func touhced(_ sender: UITapGestureRecognizer) {
-        let selectedPoint = sender.location(in: view)
-        var count = 0
-        for label in labelArray {
-            if(label.frame.contains(selectedPoint)) {
-                checkAnswer(labelChosen: label, num: count)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                    self.performSegue(withIdentifier: "unwindSegue", sender: Any?.self)
+        if(wait) {
+            return
+        }
+        if numOfQuestions < 18 {//fix?
+            let selectedPoint = sender.location(in: view)
+            numOfQuestions += 1
+            for label in labelsArray {
+                if(label.frame.contains(selectedPoint)) {
+                    self.wait = true
+                    if label.text! == questionArray[0]["correct"] {
+                        label.backgroundColor = .green
+                        questionArray.remove(at: 0)
+                        self.wait = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.updateLabels()
+                            for label in self.labelsArray {
+                                label.backgroundColor = .clear
+                            }
+                            self.wait = false
+                        }
+                        
+                    }
+                    else {
+                        label.backgroundColor = .red
+                        checkAnswer(label: label)
+                        questionArray.remove(at: 0)
+                        self.wait = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            for label in self.labelsArray {
+                                label.backgroundColor = .clear
+                                self.updateLabels()
+                            }
+                            self.wait = false
+                        }
+                    }
+                    
                 }
-                return
             }
-            count += 1
+        } else {
+            print("shit")
         }
     }
     
-    var answered = false
-    
-    func checkAnswer(labelChosen: UILabel, num: Int) {
-        if(answered) {
-            return
+    func checkAnswer (label: UILabel) {
+        for clabel in labelsArray {
+            if clabel.text! == questionArray[0]["correct"] {
+                clabel.backgroundColor = .green
+            }
         }
-        if(num == correctIndex) {
-            labelChosen.backgroundColor = .green
-            answeredArray[genreNum][questionNum] = 1
-            count[genreNum] += 1
-            totalCount[genreNum] += 1
-        } else {
-            labelChosen.backgroundColor = .red
-            correctLabel.backgroundColor = .green
-            answeredArray[genreNum][questionNum] = 2
-            totalCount[genreNum] += 1
-        }
-        answered = true
     }
 }
 
