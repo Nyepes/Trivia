@@ -12,11 +12,11 @@ class SpeedResultViewController: UIViewController {
 
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var score = 0
+    var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scoreLabel.text! = "Score: " + String(score)
+        scoreLabel.text! = "Score: " + String(scores.currentScore)
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -27,6 +27,11 @@ class SpeedResultViewController: UIViewController {
     
     @IBAction func onShareResultsClicked(_ sender: UIButton) {
         self.displayShareSheet(shareContent: self.scoreLabel.text!)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! SpeedInfoViewController
+        dvc.scores = scores
     }
 
 }
