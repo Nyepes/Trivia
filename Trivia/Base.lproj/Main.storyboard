@@ -306,6 +306,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kui-g9-Pjo">
+                                <rect key="frame" x="142" y="289" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share Results"/>
+                                <connections>
+                                    <action selector="onShareResultsClicked:" destination="HFa-cc-lv5" eventType="touchUpInside" id="AVy-MF-eMd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -321,6 +329,7 @@
                         <outlet property="resetButton" destination="Kxp-Ra-nsy" id="ZcR-0V-vHj"/>
                         <outlet property="scoreLabel" destination="l5p-Bh-EAG" id="NHy-ns-Pc7"/>
                         <outlet property="secondAnswerLabel" destination="Fgt-Sz-wv9" id="pLb-ET-HWO"/>
+                        <outlet property="shareResultsButton" destination="Kui-g9-Pjo" id="RAB-kC-jYi"/>
                         <outlet property="streakLabel" destination="6Y2-I6-6PZ" id="cCP-Af-y2c"/>
                         <outlet property="thirdAnswerLabel" destination="jXg-pR-fGo" id="hkt-yL-XcB"/>
                         <outlet property="timeRemainingLabel" destination="nZj-3G-Dld" id="F3u-xo-eCu"/>
@@ -496,7 +505,6 @@
         <image name="speeeeeed" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aVu-e3-IJ1"/>
         <segue reference="A50-Rj-yhh"/>
     </inferredMetricsTieBreakers>
 </document>

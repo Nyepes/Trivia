@@ -8,8 +8,6 @@
 
 import UIKit
 
-var score = 0
-
 class SpeedQuestionViewController: UIViewController {
     
     var labelsArray = [UILabel]()
@@ -22,6 +20,7 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var timeRemainingLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var streakLabel: UILabel!
+    @IBOutlet weak var shareResultsButton: UIButton!
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
@@ -76,7 +75,8 @@ class SpeedQuestionViewController: UIViewController {
                     self.resetButton.alpha = 1
                     self.resetButton.isEnabled = true
                     self.scoreLabel.text = ""
-                    self.displayShareSheet(shareContent: self.questionLabel.text!)
+                    self.shareResultsButton.alpha = 1
+                   
                 }
             }
         }
@@ -210,6 +210,9 @@ class SpeedQuestionViewController: UIViewController {
     func displayShareSheet(shareContent:String) {
         let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
         present(activityViewController, animated: true, completion: {})
+    }
+    @IBAction func onShareResultsClicked(_ sender: UIButton) {
+         self.displayShareSheet(shareContent: self.questionLabel.text!)
     }
 }
 
