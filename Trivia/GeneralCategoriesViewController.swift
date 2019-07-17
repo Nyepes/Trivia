@@ -39,11 +39,11 @@ class GeneralCategoriesViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func unwindToGeneralIinitialViewController(Segue: UIStoryboardSegue) {
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc = segue.destination as! GeneralQuestionsViewController
-        let index = tableView.indexPathForSelectedRow?.row
         genreNum = index!
-        dvc.genre = genre[index!]
     }
 }
 
