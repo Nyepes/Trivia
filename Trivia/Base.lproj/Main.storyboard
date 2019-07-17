@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios13\" translatesAutoresizingMaskIntoConstraints="NO" id="BFG-H7-Vqe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios13" translatesAutoresizingMaskIntoConstraints="NO" id="BFG-H7-Vqe">
                                 <rect key="frame" x="-234" y="-258" width="914" height="1302"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -437,9 +437,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ios13\" width="3208" height="3208"/>
+        <image name="ios13" width="3208" height="3208"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A50-Rj-yhh"/>
+        <segue reference="tkl-s0-h9K"/>
     </inferredMetricsTieBreakers>
 </document>
