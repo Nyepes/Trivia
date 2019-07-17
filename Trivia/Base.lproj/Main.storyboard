@@ -18,12 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios13" translatesAutoresizingMaskIntoConstraints="NO" id="BFG-H7-Vqe">
-                                <rect key="frame" x="-234" y="-258" width="914" height="1302"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios13" translatesAutoresizingMaskIntoConstraints="NO" id="cbx-1V-KiP">
-                                <rect key="frame" x="-224" y="-249" width="565" height="1110"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios13adj" translatesAutoresizingMaskIntoConstraints="NO" id="qGe-CY-o9B">
+                                <rect key="frame" x="-7" y="0.0" width="387" height="819"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFX-k3-WWK">
@@ -536,6 +532,7 @@
     </scenes>
     <resources>
         <image name="ios13" width="3208" height="3208"/>
+        <image name="ios13adj" width="1482" height="3208"/>
         <image name="speeeeeed" width="512" height="512"/>
     </resources>
 </document>
