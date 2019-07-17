@@ -32,6 +32,7 @@ class SpeedQuestionViewController: UIViewController {
     var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
+        scores.currentScore = 0
         resetButton.alpha = 0
         resetButton.isEnabled = false
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
@@ -39,6 +40,7 @@ class SpeedQuestionViewController: UIViewController {
         if let savedData = defaults.object(forKey: "data") as? Data {
             if let decoded = try? JSONDecoder().decode(Scores.self, from: savedData) {
                 self.scores = decoded
+                scores.currentScore = 0
             }
         }
         if let url = URL(string: "https://opentdb.com/api.php?amount=50&type=multiple") {
@@ -195,7 +197,7 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     func saveData() {
-        if let encoded = try? JSONEncoder().encode(scores.currentScore) {
+        if let encoded = try? JSONEncoder().encode(scores.highScore) {
             defaults.set(encoded, forKey: "data")
         }
     }
