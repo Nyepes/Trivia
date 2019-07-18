@@ -58,7 +58,7 @@ class SpeedQuestionViewController: UIViewController {
             self.count -= 0.01
             self.timeRemainingLabel.text = "Time Remaining: " +  String(format: "%.2f", self.count)  + "sec"
             switch self.count {
-            case 27...30:
+            case 27...:
                 self.animationLabel.text = "("
             case 24...27:
                 self.animationLabel.text = "(╯"
