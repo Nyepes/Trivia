@@ -131,7 +131,6 @@ class ActualQuestionViewController: UIViewController {
         }
         if numOfQuestions < 18 {//fix?
             let selectedPoint = sender.location(in: view)
-            
             for label in labelsArray {
                 if (questionArray.count > 1) {
                     if(label.frame.contains(selectedPoint)) {
@@ -144,9 +143,7 @@ class ActualQuestionViewController: UIViewController {
                             questionArray.remove(at: 0)
                             self.wait = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                if self.labelsArray.count > 1 {
-                                    self.updateLabels()
-                                }
+                                self.updateLabels()
                                 for label in self.labelsArray {
                                     label.backgroundColor = .clear
                                 }
@@ -161,21 +158,20 @@ class ActualQuestionViewController: UIViewController {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 for label in self.labelsArray {
                                     label.backgroundColor = .clear
-                                    if self.questionArray.count > 1 {
-                                        self.updateLabels()
-                                    }
+                                    self.updateLabels()
                                 }
                                 self.wait = false
                             }
                         }
-                }
-                
+                    }
                 } else {
-                    questionLabel.text = "There are no more questions in this category, try another one!"
-                    answer1Label.text = ""
-                    answer2Label.text = ""
-                    answer3Label.text = ""
-                    answer4Label.text = ""
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.questionLabel.text = "There are no more questions in this category, try another one!"
+                        self.answer1Label.text = ""
+                        self.answer2Label.text = ""
+                        self.answer3Label.text = ""
+                        self.answer4Label.text = ""
+                    }
                 }
             }
         }
