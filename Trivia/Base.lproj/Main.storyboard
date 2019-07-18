@@ -467,6 +467,13 @@
                                 <rect key="frame" x="-6" y="7" width="387" height="819"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCg-43-u7p">
+                                <rect key="frame" x="87" y="676" width="200" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -481,6 +488,7 @@
                         <outlet property="answer3Label" destination="AJr-1k-RLn" id="VwE-m5-MaP"/>
                         <outlet property="answer4Label" destination="r5v-8E-rhG" id="06X-Rg-Kb6"/>
                         <outlet property="questionLabel" destination="yjV-kC-CDs" id="aA1-8l-RAr"/>
+                        <outlet property="scoreLabel" destination="UCg-43-u7p" id="hX1-dl-6MU"/>
                         <segue destination="Hz1-hF-Nna" kind="unwind" identifier="unwindSegue" unwindAction="unwindToGeneralIinitialViewControllerWithSegue:" id="d26-jV-9bM"/>
                     </connections>
                 </viewController>

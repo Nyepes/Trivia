@@ -14,6 +14,7 @@ class ActualQuestionViewController: UIViewController {
     @IBOutlet weak var answer2Label: UILabel!
     @IBOutlet weak var answer3Label: UILabel!
     @IBOutlet weak var answer4Label: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var questionArray = [[String: String]]()
     var questionNum = 0
@@ -94,6 +95,7 @@ class ActualQuestionViewController: UIViewController {
     }
     
     func updateLabels() {
+        scoreLabel.text = "Score: " + String(count[genreNum]) + "/" + String(totalCount[genreNum])
         questionLabel.text = questionArray[0]["question"]
         var answersArray = [questionArray[0]["correct"], questionArray[0]["wrong1"], questionArray[0]["wrong2"], questionArray[0]["wrong3"]]
         answersArray.shuffle()
@@ -126,8 +128,10 @@ class ActualQuestionViewController: UIViewController {
             numOfQuestions += 1
             for label in labelsArray {
                 if(label.frame.contains(selectedPoint)) {
+                    totalCount[genreNum] += 1
                     self.wait = true
                     if label.text! == questionArray[0]["correct"] {
+                        count[genreNum] += 1
                         label.backgroundColor = .green
                         questionArray.remove(at: 0)
                         self.wait = true

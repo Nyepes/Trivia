@@ -29,7 +29,7 @@ class SpeedResultViewController: UIViewController {
     }
     
     @IBAction func onShareResultsClicked(_ sender: UIButton) {
-        self.displayShareSheet(shareContent: self.scoreLabel.text!)
+        self.displayShareSheet(shareContent: "I scored \(scores.currentScore) on Speed Trivia. Can you beat that? Download Speed Trivia from the App Store today for free!!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
