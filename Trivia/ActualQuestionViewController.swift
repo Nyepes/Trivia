@@ -132,7 +132,7 @@ class ActualQuestionViewController: UIViewController {
         if numOfQuestions < 18 {//fix?
             let selectedPoint = sender.location(in: view)
             for label in labelsArray {
-                if (questionArray.count > 0) {
+                if (questionArray.count > 1) {
                     if(label.frame.contains(selectedPoint)) {
                         numOfQuestions += 1
                         totalCount[genreNum] += 1
