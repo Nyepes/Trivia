@@ -165,6 +165,7 @@ class ActualQuestionViewController: UIViewController {
                         }
                     }
                 } else {
+                    self.wait = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.questionLabel.text = "There are no more questions in this category, try another one!"
                         self.answer1Label.text = ""
