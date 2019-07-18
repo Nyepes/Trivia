@@ -230,6 +230,7 @@ private let characterEntities : [ Substring : Character ] = [
     "&Ograve;"  : "Ò",
     "&Oacute;"  : "Ó",
     "&Ouml;"    : "Ö",
+    "&Ocirc;"   : "Ô",
     "&Ugrave;"  : "Ù",
     "&Uacute;"  : "Ú",
     "&agrave;"  : "à",
@@ -248,12 +249,47 @@ private let characterEntities : [ Substring : Character ] = [
     "&ograve;"  : "ò",
     "&oacute;"  : "ó",
     "&ouml;"    : "ö",
+    "&ocirc;"   : "ô",
     "&ugrave;"  : "ù",
     "&uacute;"  : "ú",
+    "&alpha;"   : "α",
+    "&beta;"    : "β",
+    "&gamma;"   : "γ",
+    "&delta;"   : "δ",
+    "&epsiv;"   : "ε",
+    "&zeta;"    : "ζ",
+    "&eta;"     : "η",
+    "&theta;"   : "θ",
+    "&iota;"    : "ι",
+    "&kappa;"   : "κ",
+    "&lambda;"  : "λ",
+    "&mu;"      : "μ",
+    "&pi;"      : "π",
+    "&sigma;"   : "σ",
+    "&tau;"     : "τ",
+    "&phi;"     : "φ",
+    "&omega;"   : "ω",
+    "&Alpha;"   : "α",
+    "&Beta;"    : "β",
+    "&Gamma;"   : "γ",
+    "&Delta;"   : "δ",
+    "&Epsiv;"   : "ε",
+    "&Zeta;"    : "ζ",
+    "&Eta;"     : "η",
+    "&Theta;"   : "θ",
+    "&Iota;"    : "ι",
+    "&Kappa;"   : "κ",
+    "&Lambda;"  : "λ",
+    "&Mu;"      : "μ",
+    "&Pi;"      : "π",
+    "&Sigma;"   : "σ",
+    "&Tau;"     : "τ",
+    "&Phi;"     : "φ",
+    "&Omega;"   : "ω",
 ]
 
 extension String {
-
+    
     var stringByDecodingHTMLEntities : String {
         
         func decodeNumeric(_ string : Substring, base : Int) -> Character? {
@@ -261,7 +297,7 @@ extension String {
                 let uniScalar = UnicodeScalar(code) else { return nil }
             return Character(uniScalar)
         }
-
+        
         func decode(_ entity : Substring) -> Character? {
             
             if entity.hasPrefix("&#x") || entity.hasPrefix("&#X") {
@@ -272,10 +308,10 @@ extension String {
                 return characterEntities[entity]
             }
         }
-  
+        
         var result = ""
         var position = startIndex
-
+        
         while let ampRange = self[position...].range(of: "&") {
             result.append(contentsOf: self[position ..< ampRange.lowerBound])
             position = ampRange.lowerBound
