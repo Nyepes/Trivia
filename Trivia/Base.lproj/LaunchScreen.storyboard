@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uno" translatesAutoresizingMaskIntoConstraints="NO" id="NZ9-W5-NdX">
-                                <rect key="frame" x="38" y="286" width="300.00000000000023" height="300"/>
+                                <rect key="frame" x="38" y="286" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="cvW-Nl-d2H"/>
                                     <constraint firstAttribute="height" constant="300" id="eKq-mT-Cio"/>
