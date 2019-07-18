@@ -181,7 +181,7 @@ private let characterEntities : [ Substring : Character ] = [
     "&quot;"    : "\"",
     "&amp;"     : "&",
     "&apos;"    : "'",
-    "&acute;"   : "\u{0000}",
+    "&eacute;"   : "e",
     "&lt;"      : "<",
     "&gt;"      : ">",
     "&Uuml;"    : "U",
@@ -191,6 +191,8 @@ private let characterEntities : [ Substring : Character ] = [
     "&rdquo"    : "'",
     "&nbsp;"    : "\u{00a0}",
     "&diams;"   : "♦",
+    "ldquo;"    : "'",
+    "rdquo;"    : "'",
 ]
 
 extension String {
