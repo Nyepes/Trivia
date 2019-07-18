@@ -19,6 +19,7 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
     @IBOutlet weak var streakLabel: UILabel!
+    @IBOutlet weak var animationLabel: UILabel!
     var questions = [[String: String]]()
     var numOfQuestions = 0
     var correctAnswer = ""
@@ -29,17 +30,6 @@ class SpeedQuestionViewController: UIViewController {
     var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
-        //Do I need this??
-//        firstAnswerLabel.adjustsFontSizeToFitWidth = true
-//        firstAnswerLabel.adjustsFontForContentSizeCategory = true
-//        secondAnswerLabel.adjustsFontSizeToFitWidth = true
-//        secondAnswerLabel.adjustsFontForContentSizeCategory = true
-//        thirdAnswerLabel.adjustsFontSizeToFitWidth = true
-//        thirdAnswerLabel.adjustsFontForContentSizeCategory = true
-//        fourthAnswerLabel.adjustsFontSizeToFitWidth = true
-//        fourthAnswerLabel.adjustsFontForContentSizeCategory = true
-//        questionLabel.adjustsFontSizeToFitWidth = true
-//        questionLabel.adjustsFontForContentSizeCategory = true
         scores.currentScore = 0
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
         super.viewDidLoad()
@@ -59,6 +49,7 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        animationLabel.text = ""
         scores.currentScore = 0
     }
     
@@ -66,7 +57,30 @@ class SpeedQuestionViewController: UIViewController {
         _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ t in
             self.count -= 0.01
             self.timeRemainingLabel.text = "Time Remaining: " +  String(format: "%.2f", self.count)  + "sec"
+            switch self.count {
+            case 27...30:
+                self.animationLabel.text = "("
+            case 24...27:
+                self.animationLabel.text = "(╯"
+            case 21...24:
+                self.animationLabel.text = "(╯°"
+            case 18...21:
+                self.animationLabel.text = "(╯°□"
+            case 15...18:
+                self.animationLabel.text = "(╯°□°"
+            case 12...15:
+                self.animationLabel.text = "(╯°□°）"
+            case 9...12:
+                self.animationLabel.text = "(╯°□°）╯"
+            case 6...9:
+                self.animationLabel.text = "(╯°□°）╯︵"
+            case 3...6:
+                self.animationLabel.text = "(╯°□°）╯︵ ┻"
+            default:
+                self.animationLabel.text = "(╯°□°）╯︵ ┻━"
+            }
             if self.count < 0.00 {
+                self.animationLabel.text = "(╯°□°）╯︵ ┻━┻"
                 self.ended = true
                 t.invalidate()
                 self.timeRemainingLabel.text = "You Lose"
@@ -194,8 +208,6 @@ class SpeedQuestionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let dvc = segue.destination as! SpeedInfoViewController
-//        dvc.scores = scores
         let dvc2 = segue.destination as! SpeedResultViewController
         dvc2.scores = scores
     }
