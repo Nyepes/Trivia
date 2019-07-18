@@ -79,7 +79,7 @@ class ActualQuestionViewController: UIViewController {
     }
     
     func parse(json: JSON) {
-        for i in 0...14 {
+        for i in 0...17 {
             let result = json["results"][i]
             let question = result["question"].stringValue.stringByDecodingHTMLEntities
             let correct = result["correct_answer"].stringValue.stringByDecodingHTMLEntities
@@ -104,6 +104,9 @@ class ActualQuestionViewController: UIViewController {
         answer2Label.text = answersArray[1]
         answer3Label.text = answersArray[2]
         answer4Label.text = answersArray[3]
+        for label in labelsArray {
+            label.backgroundColor = .white
+        }
     }
     
     func loadError() {
@@ -126,37 +129,51 @@ class ActualQuestionViewController: UIViewController {
         }
         if numOfQuestions < 18 {//fix?
             let selectedPoint = sender.location(in: view)
-            numOfQuestions += 1
+            
             for label in labelsArray {
-                if(label.frame.contains(selectedPoint)) {
-                    totalCount[genreNum] += 1
-                    self.wait = true
-                    if label.text! == questionArray[0]["correct"] {
-                        count[genreNum] += 1
-                        label.backgroundColor = .green
-                        questionArray.remove(at: 0)
+                if (questionArray.count > 1) {
+                    if(label.frame.contains(selectedPoint)) {
+                        numOfQuestions += 1
+                        totalCount[genreNum] += 1
                         self.wait = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.updateLabels()
-                            for label in self.labelsArray {
-                                label.backgroundColor = .clear
+                        if label.text! == questionArray[0]["correct"] {
+                            count[genreNum] += 1
+                            label.backgroundColor = .green
+                            questionArray.remove(at: 0)
+                            self.wait = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                if self.labelsArray.count > 1 {
+                                    self.updateLabels()
+                                }
+                                for label in self.labelsArray {
+                                    label.backgroundColor = .clear
+                                }
+                                self.wait = false
                             }
-                            self.wait = false
                         }
-                    }
-                    else {
-                        label.backgroundColor = .red
-                        checkAnswer(label: label)
-                        questionArray.remove(at: 0)
-                        self.wait = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            for label in self.labelsArray {
-                                label.backgroundColor = .clear
-                                self.updateLabels()
+                        else {
+                            label.backgroundColor = .red
+                            checkAnswer(label: label)
+                            questionArray.remove(at: 0)
+                            self.wait = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                for label in self.labelsArray {
+                                    label.backgroundColor = .clear
+                                    if self.questionArray.count > 1 {
+                                        self.updateLabels()
+                                    }
+                                }
+                                self.wait = false
                             }
-                            self.wait = false
                         }
-                    }
+                }
+                
+                } else {
+                    questionLabel.text = "There are no more questions in this category, try another one!"
+                    answer1Label.text = ""
+                    answer2Label.text = ""
+                    answer3Label.text = ""
+                    answer4Label.text = ""
                 }
             }
         }
