@@ -32,6 +32,11 @@ class SpeedQuestionViewController: UIViewController {
     override func viewDidLoad() {
         scores.currentScore = 0
         labelsArray = [firstAnswerLabel, secondAnswerLabel, thirdAnswerLabel, fourthAnswerLabel]
+        questionLabel.lineBreakMode = .byWordWrapping
+        for label in labelsArray {
+            label.lineBreakMode = .byWordWrapping
+            label.numberOfLines = 0
+        }
         super.viewDidLoad()
         if let savedData = defaults.object(forKey: "data") as? Data {
             if let decoded = try? JSONDecoder().decode(Scores.self, from: savedData) {
