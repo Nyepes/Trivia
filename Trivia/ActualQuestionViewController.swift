@@ -23,6 +23,9 @@ class ActualQuestionViewController: UIViewController {
     var labelsArray = [UILabel]()
     
     override func viewDidLoad() {
+        for label in labelsArray {
+            label.lineBreakMode = .byWordWrapping
+        }
         loadData()
         questionArray.shuffle()
         labelsArray = [answer1Label, answer2Label, answer3Label, answer4Label]
@@ -181,7 +184,7 @@ private let characterEntities : [ Substring : Character ] = [
     "&quot;"    : "\"",
     "&amp;"     : "&",
     "&apos;"    : "'",
-    "&eacute;"   : "e",
+    "&eacute;"  : "e",
     "&lt;"      : "<",
     "&gt;"      : ">",
     "&Uuml;"    : "U",
@@ -191,8 +194,9 @@ private let characterEntities : [ Substring : Character ] = [
     "&rdquo"    : "'",
     "&nbsp;"    : "\u{00a0}",
     "&diams;"   : "♦",
-    "ldquo;"    : "'",
-    "rdquo;"    : "'",
+    "&ldquo;"   : "'",
+    "&rdquo;"   : "'",
+    "&scaron;"  : "s",
 ]
 
 extension String {
