@@ -18,7 +18,6 @@ class SpeedQuestionViewController: UIViewController {
     @IBOutlet weak var fourthAnswerLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
-    @IBOutlet weak var streakLabel: UILabel!
     @IBOutlet weak var animationLabel: UILabel!
     var questions = [[String: String]]()
     var numOfQuestions = 0
@@ -123,7 +122,6 @@ class SpeedQuestionViewController: UIViewController {
         secondAnswerLabel.text = answersArray[1]
         thirdAnswerLabel.text = answersArray[2]
         fourthAnswerLabel.text = answersArray[3]
-        streakLabel.text = "Streak: \(scores.streak)"
         scoreLabel.text = "Score: \(scores.currentScore)"
         
     }
@@ -145,8 +143,6 @@ class SpeedQuestionViewController: UIViewController {
                         count += 5
                         scores.currentScore += 1
                         scoreLabel.text = "Score: \(scores.currentScore)"
-                        scores.streak += 1
-                        streakLabel.text = "Streak: \(scores.streak)"
                         self.wait = true
                         saveData()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -164,7 +160,6 @@ class SpeedQuestionViewController: UIViewController {
                         questions.remove(at: 0)
                         self.wait = true
                         saveData()
-                        scores.streak = 0
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             for label in self.labelsArray {
                                 label.backgroundColor = .clear

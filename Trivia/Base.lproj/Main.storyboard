@@ -298,17 +298,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5p-Bh-EAG">
-                                <rect key="frame" x="16" y="763" width="349" height="24"/>
+                                <rect key="frame" x="16" y="704" width="349" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-I6-6PZ">
-                                <rect key="frame" x="19" y="715" width="346" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="32"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -326,7 +319,6 @@
                         <outlet property="questionLabel" destination="1Zd-QB-o0k" id="any-uN-Fnw"/>
                         <outlet property="scoreLabel" destination="l5p-Bh-EAG" id="NHy-ns-Pc7"/>
                         <outlet property="secondAnswerLabel" destination="Fgt-Sz-wv9" id="pLb-ET-HWO"/>
-                        <outlet property="streakLabel" destination="6Y2-I6-6PZ" id="cCP-Af-y2c"/>
                         <outlet property="thirdAnswerLabel" destination="jXg-pR-fGo" id="hkt-yL-XcB"/>
                         <outlet property="timeRemainingLabel" destination="nZj-3G-Dld" id="F3u-xo-eCu"/>
                         <segue destination="adc-et-WcY" kind="show" identifier="showResults" id="ZIt-FJ-ymB"/>
@@ -339,7 +331,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3006" y="819"/>
+            <point key="canvasLocation" x="3005.5999999999999" y="818.7192118226601"/>
         </scene>
         <!--Speed Result View Controller-->
         <scene sceneID="h2M-LP-sxT">
