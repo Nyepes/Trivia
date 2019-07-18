@@ -11,7 +11,6 @@ import UIKit
 class SpeedInfoViewController: UIViewController {
 
     @IBOutlet weak var highScoreLabel: UILabel!
-    
     let defaults = UserDefaults.standard
     var scores = Scores(highScore: 0, score: 0)
     
@@ -23,6 +22,7 @@ class SpeedInfoViewController: UIViewController {
             }
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         checkHighScore()
@@ -55,6 +55,7 @@ class SpeedInfoViewController: UIViewController {
             defaults.set(encoded, forKey: "data")
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! SpeedQuestionViewController
         dvc.scores = scores

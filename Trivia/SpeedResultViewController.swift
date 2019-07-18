@@ -9,11 +9,10 @@
 import UIKit
 
 class SpeedResultViewController: UIViewController {
-
+    
     @IBOutlet weak var meme: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var flippingTables: UILabel!
-    
     var scores = Scores(highScore: 0, score: 0)
     
     override func viewDidLoad() {
@@ -45,5 +44,4 @@ class SpeedResultViewController: UIViewController {
             meme.image = UIImage(named: "lose")
         }
     }
-
 }
