@@ -15,7 +15,6 @@ class ActualQuestionViewController: UIViewController {
     @IBOutlet weak var answer3Label: UILabel!
     @IBOutlet weak var answer4Label: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    
     var questionArray = [[String: String]]()
     var questionNum = 0
     var correctIndex = 0
@@ -144,7 +143,6 @@ class ActualQuestionViewController: UIViewController {
                             }
                             self.wait = false
                         }
-                        
                     }
                     else {
                         label.backgroundColor = .red
@@ -159,11 +157,8 @@ class ActualQuestionViewController: UIViewController {
                             self.wait = false
                         }
                     }
-                    
                 }
             }
-        } else {
-            print("shit")
         }
     }
     

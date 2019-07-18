@@ -15,7 +15,7 @@ var numGenre = 14
 
 class GeneralCategoriesViewController: UITableViewController {
     
-    var genre = ["Sports", "History", "Science", "Music", "Politics", "Books", "Film", "Video Games", "Math", "Geography", "Art", "Celebrities", "Animals", "Japanese Anime"]
+    var genres = ["Sports", "History", "Science", "Music", "Politics", "Books", "Film", "Video Games", "Math", "Geography", "Art", "Celebrities", "Animals", "Japanese Anime"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +27,12 @@ class GeneralCategoriesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genre.count
+        return genres.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = genre[indexPath.row]
+        cell.textLabel?.text = genres[indexPath.row]
         if(totalCount[indexPath.row] != 0) {
             cell.detailTextLabel?.text = "Previous Score: " + String(count[indexPath.row]) + "/" + String(totalCount[indexPath.row])
         }

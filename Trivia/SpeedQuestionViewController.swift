@@ -131,47 +131,45 @@ class SpeedQuestionViewController: UIViewController {
             
             let selectedPoint = sender.location(in: view)
             numOfQuestions += 1
-                for label in labelsArray {
-                    if(label.frame.contains(selectedPoint)) {
+            for label in labelsArray {
+                if(label.frame.contains(selectedPoint)) {
+                    self.wait = true
+                    if label.text! == questions[0]["correct"] {
+                        label.backgroundColor = .green
+                        questions.remove(at: 0)
+                        count += 5
+                        scores.currentScore += 1
+                        scoreLabel.text = "Score: \(scores.currentScore)"
+                        scores.streak += 1
+                        streakLabel.text = "Streak: \(scores.streak)"
                         self.wait = true
-                        if label.text! == questions[0]["correct"] {
-                            label.backgroundColor = .green
-                            questions.remove(at: 0)
-                            count += 5
-                            scores.currentScore += 1
-                            scoreLabel.text = "Score: \(scores.currentScore)"
-                            scores.streak += 1
-                            streakLabel.text = "Streak: \(scores.streak)"
-                            self.wait = true
-                            saveData()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        saveData()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.updateLabels()
+                            for label in self.labelsArray {
+                                label.backgroundColor = .clear
+                            }
+                            self.wait = false
+                        }
+                    }
+                    else {
+                        count -= 3
+                        label.backgroundColor = .red
+                        checkAnswer(label: label)
+                        questions.remove(at: 0)
+                        self.wait = true
+                        saveData()
+                        scores.streak = 0
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            for label in self.labelsArray {
+                                label.backgroundColor = .clear
                                 self.updateLabels()
-                                for label in self.labelsArray {
-                                    label.backgroundColor = .clear
-                                }
-                                self.wait = false
                             }
-                            
+                            self.wait = false
                         }
-                        else {
-                            count -= 3
-                            label.backgroundColor = .red
-                            checkAnswer(label: label)
-                            questions.remove(at: 0)
-                            self.wait = true
-                            saveData()
-                            scores.streak = 0
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                for label in self.labelsArray {
-                                    label.backgroundColor = .clear
-                                    self.updateLabels()
-                                }
-                                self.wait = false
-                            }
-                        }
-                        
                     }
                 }
+            }
         } else {
             updateParse()
         }
@@ -179,7 +177,6 @@ class SpeedQuestionViewController: UIViewController {
     
     func checkAnswer (label: UILabel) {
         if label.text == correctAnswer {
-            //score += 1
             label.backgroundColor = .green
         }
         else {
