@@ -27,6 +27,8 @@ class ActualQuestionViewController: UIViewController {
         questionArray.shuffle()
         labelsArray = [answer1Label, answer2Label, answer3Label, answer4Label]
         super.viewDidLoad()
+        count[genreNum] = 0
+        totalCount[genreNum] = 0
     }
     
     func loadData() {
